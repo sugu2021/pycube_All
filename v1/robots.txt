@@ -1,0 +1,14 @@
+User-agent: * 
+
+Disallow: 
+Disallow: /blog_post.php?post_id=*
+Disallow: /blog.php?page=*
+Disallow: /blog_category.php?cat_id=*
+User-agent: Yahoo! Slurp 
+
+Allow: / 
+Disallow: /blog_post.php?post_id=*
+Disallow: /blog.php?page=*
+Disallow: /blog_category.php?cat_id=*
+
+Sitemap: https://www.pycube.com/sitemap.xml

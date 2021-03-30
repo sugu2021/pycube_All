@@ -1,0 +1,63 @@
+h2{
+	background-image:none !important;
+}
+.mp-menu{
+	display:none;
+}
+.logo{
+	width:15%;
+	float:left !important;
+}
+.right-nav{
+	width:85%;
+	float:right !important;
+}
+.col-md-6{
+	float:left;
+	width:50%;
+}
+.col-md-1,
+.col-md-1,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11
+{
+	float:left;
+}
+.row{
+	float:none;
+	clear:both;
+	display:block;
+}
+.col-md-12{
+	width:100%;
+}
+.testimonials{
+	width:90%;
+	margin:10px auto;
+	max-width:1100px;
+	clear:both;
+}
+.cstories-con{
+	overflow:auto;
+}
+.btn2{
+	display:none !important;
+}

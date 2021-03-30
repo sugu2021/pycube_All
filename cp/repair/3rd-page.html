@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>pycube</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
+</head>
+<body>
+
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-sm  navbar-dark justify-content-end">
+		<!-- Brand/logo -->
+		<a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<h3 class="report_heading">10023975 – Hospita/Abott Plum+ <span class="report_heading_span"><small>1.9</small></span>
+			<span class="star_span">
+				<span class="fa fa-star star_checked"></span>
+				<span class="fa fa-star star_checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</span>
+		</h3>
+		<div class="report_box">
+			<div class="row table_box">
+				<div class="col-sm-4">
+					<table class="table table-borderless">
+						<tbody>
+							<tr>
+								<td>Asset Id</td>
+								<td>: 10023975</td>
+							</tr>
+							<tr>
+								<td>Asset Tag</td>
+								<td>: IVF4567</td>
+							</tr>
+							<tr>
+								<td>Category</td>
+								<td>: Pumps</td>
+							</tr>
+							<tr>
+								<td>Owning Dept.</td>
+								<td>: Gynecology</td>
+							</tr>
+							<tr>
+								<td>Status</td>
+								<td>: In Maintenance</td>
+							</tr>
+							<tr>
+								<td>Operational Status</td>
+								<td>: Non operational</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-sm-8">
+					<div class="text-right px-5">
+						<img class="report_img" src="img/equipment.png">
+					</div>
+				</div>
+			</div>
+			
+			<div class="report_graph">
+				<div class="row">
+					<div class="col-sm-6">
+						<canvas id="bar-chart" width="100" height="100"></canvas>
+					</div>
+					<div class="col-sm-6">
+						<canvas id="bar-chart1" width="100" height="100"></canvas>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-right py-2">
+				<a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Detailed View </a>
+			</div>
+
+			<div class="source_box pt-5 collapse" id="collapseExample">
+				<div class="row m-0" style="    margin-bottom: 70px !important;">
+					<div class="col-sm-3">
+						<input type="checkbox" id="box1" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box1"> 
+							<div class="box_circle"><div class="circle_value">4</div></div>
+							<h3 class="box_main_text">ASSET AGE</h3>
+							<ul class="details_ul">
+								<li>Life left : 12 months</li>
+								<li>End of life (years) : 5</li>
+								<li>Maximum life (years) :8</li>
+								<li>Can asset function for few more years ? Yes</li>
+							</ul>
+							<div class="text-center">
+								<span class="star_span">
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</span>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box2" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box2"> 
+							<div class="box_circle"><div class="circle_value">$95</div></div>
+							<h3 class="box_main_text">ASSET VALUE</h3>
+							<ul class="details_ul">
+								<li>Purchase cost : $ 450</li>
+								<li>Current Asset value : $95</li>
+							</ul>
+							<div>
+								<div class="doughnut">
+									<div class="doughnutChartContainer">
+										<canvas id="doughnutChart" height="100"></canvas>
+									</div>
+									<div id="legend" class="chart-legend"></div>
+								</div>
+								<div class="text-center" style="font-size: 12px;color: #96979e;">
+									Purchase cost vs.<br>
+									current asset value
+								</div>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box3" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box3"> 
+							<div class="box_circle"><div class="circle_value">10</div></div>
+							<h3 class="box_main_text">ASSET COUNT</h3>
+							<ul class="details_ul">
+								<li>Asset count in category : 10</li>
+								<li>Asset count required to be operational : 7</li>
+								<li>Asset count discarded this year : 1</li>
+							</ul>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box4" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box4"> 
+							<div class="box_circle"><div class="circle_value">X</div></div>
+							<h3 class="box_main_text">WARRANTY</h3>
+							<ul class="details_ul">
+								<li>Expired : MM/DD/YYYY</li>
+							</ul>
+						</label>
+					</div>
+				</div>
+
+				<div class="row m-0">
+					<div class="col-sm-3">
+						<input type="checkbox" id="box5" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box5"> 
+							<div class="box_circle"><div class="circle_value">$55</div></div>
+							<h3 class="box_main_text">REPAIR COST</h3>
+							<ul class="details_ul">
+								<li>Repair cost : $ 55</li>
+								<li>Current Asset value : $ 95</li>
+							</ul>
+							<div>
+								<div class="doughnut">
+									<div class="doughnutChartContainer">
+										<canvas id="doughnutChart1" height="100"></canvas>
+									</div>
+									<div id="legend" class="chart-legend"></div>
+								</div>
+								<div class="text-center" style="font-size: 12px;color: #96979e;">
+									Cost of Asset vs.<br>
+									Cost of repair
+								</div>
+							</div>
+							<div class="text-center">
+								<span class="star_span">
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</span>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box6" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box6"> 
+							<div class="box_circle"><div class="circle_value">$$</div></div>
+							<h3 class="box_main_text">REVENUE</h3>
+							<ul class="details_ul">
+								<li>Repair costs (Previous year) :$$</li>
+								<li>Tickets generated(previous year): 8</li>
+								<li>Revenue generated (previous year) : $$</li>
+							</ul>
+							<div class="text-center">
+								<span class="star_span">
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</span>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box8" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box8"> 
+							<div class="box_circle"><div class="circle_value">37%</div></div>
+							<h3 class="box_main_text">UTILIZATION</h3>
+							<ul class="details_ul">
+								<li>Number of times used (previous year) : 17</li>
+								<li>Simultaneously used asset count (max) : 7</li>
+							</ul>
+							<div class="text-center">
+								<span class="star_span">
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star star_checked"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+								</span>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<input type="checkbox" id="box8" class="control_checkbox" value="">
+						<label class="check_box_lbl" for="box8"> 
+							<div class="box_circle"><div class="circle_value">$$</div></div>
+							<h3 class="box_main_text">REPLACEMENT</h3>
+							<ul class="details_ul">
+								<li>Next replacement date : MM/DD/YYYY</li>
+								<li>Replacement count : 2</li>
+							</ul>
+						</label>
+					</div>
+				</div>
+
+				<div class="row mx-0 mt-5">
+					<div class="col-sm-5">
+						<form class="form-inline">
+							<div class="form-group" style="width: 100%;">
+								<label for="" class="col-sm-4 col-form-label">Logged in user :</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="" value="John Smith" placeholder="" disabled>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm-7">
+						<button type="button" class="btn custom_button mx-4">PENDING</button>
+						<button type="button" class="btn custom_button mx-4">REPAIR</button>
+						<button type="button" class="btn custom_button mx-4">DISCARD</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row mt-1">
+			<div class="col-sm-12">
+				<div class="form-group">
+					<textarea style="background: transparent;border-color: #adadad;" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Recommendation : "></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var numberWithCommas = function(x) {
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		};
+
+		var dataPack1 = [95, 85];
+		var dates = ["ASSETVALUE", "REPAIRCOST"];
+
+// Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
+
+var bar_ctx = document.getElementById('bar-chart');
+var bar_chart = new Chart(bar_ctx, {
+	type: 'bar',
+	data: {
+		labels: dates,
+		datasets: [
+		{
+			label: 'Ticket Count Trends',
+			data: dataPack1,
+			backgroundColor: "rgb(246, 129, 54)",
+			hoverBackgroundColor: "rgb(246, 129, 54)",
+			hoverBorderWidth: 2,
+			hoverBorderColor: 'lightgrey'
+		},
+		]
+	},
+	options: {
+		animation: {
+			duration: 10,
+		},
+		tooltips: {
+			mode: 'label',
+			callbacks: {
+				label: function(tooltipItem, data) { 
+					return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
+				}
+			}
+		},
+		scales: {
+			xAxes: [{ 
+				stacked: true, 
+				gridLines: { display: false },
+			}],
+			yAxes: [{ 
+				stacked: true, 
+				ticks: {
+					callback: function(value) { return numberWithCommas(value); },
+				}, 
+			}],
+        }, // scales
+        legend: {display: true}
+    } // options
+}
+);
+ // Return with commas in between
+ var numberWithCommas = function(x) {
+ 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+ };
+
+ var dataPack3 = [10];
+ var dataPack4 = [7];
+ var dates = ["CURRENT-ASSET-COUNT"];
+
+// Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
+
+var bar_ctx1 = document.getElementById('bar-chart1');
+var bar_chart1 = new Chart(bar_ctx1, {
+	type: 'bar',
+	data: {
+		labels: dates,
+		datasets: [
+		{
+			label: 'MIN COUNT ',
+			data: dataPack3,
+			backgroundColor: "#4472c4",
+			hoverBackgroundColor: "#4472c4",
+			hoverBorderWidth: 0
+		},
+		{
+			label: 'ASSET COUNT',
+			data: dataPack4,
+			backgroundColor: "#ed7d31",
+			hoverBackgroundColor: "#ed7d31",
+			hoverBorderWidth: 0
+		},
+		]
+	},
+	options: {
+		animation: {
+			duration: 10,
+		},
+		tooltips: {
+			mode: 'label',
+			callbacks: {
+				label: function(tooltipItem, data) { 
+					return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
+				}
+			}
+		},
+		scales: {
+			xAxes: [{ 
+				stacked: true, 
+				gridLines: { display: false },
+			}],
+			yAxes: [{ 
+				stacked: true, 
+				ticks: {
+					callback: function(value) { return numberWithCommas(value); },
+				}, 
+			}],
+        }, // scales
+        legend: {display: true}
+    } // options
+}
+);
+
+var colors = [
+'#70ad47',
+'#5b9bd5',
+];
+var labels = ["Purchase cost ", "Current asset value"];
+var data = [90, 10];
+var bgColor = colors;
+var dataChart = {
+	labels: labels,
+	datasets: [{
+		data: data,
+		backgroundColor: bgColor
+	}]
+};
+var config = {
+	type: 'doughnut',
+	data: dataChart,
+	options: {
+		maintainAspectRatio: false,
+		cutoutPercentage: 45,
+		legend: {
+			display: false
+		},
+		tooltips: {
+			yPadding: 10,
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var total = 0;
+					data.datasets[tooltipItem.datasetIndex].data.forEach(function(element /*, index, array*/ ) {
+						total += element;
+					});
+					var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					var percentTxt = Math.round(value / total * 100);
+					return data.labels[tooltipItem.index] + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + ' (' + percentTxt + '%)';
+				}
+			}
+		}
+	}
+};
+var ctx = document.getElementById("doughnutChart").getContext("2d");
+var doughnutChart = new Chart(ctx, config);
+
+
+var colors = [
+'#ed7d31',
+'#ffc000',
+];
+var labels = ["Cost of Asset", "Cost of repair"];
+var data = [90, 10];
+var bgColor = colors;
+var dataChart = {
+	labels: labels,
+	datasets: [{
+		data: data,
+		backgroundColor: bgColor
+	}]
+};
+var config = {
+	type: 'doughnut',
+	data: dataChart,
+	options: {
+		maintainAspectRatio: false,
+		cutoutPercentage: 45,
+		legend: {
+			display: false
+		},
+		tooltips: {
+			yPadding: 10,
+			callbacks: {
+				label: function(tooltipItem, data) {
+					var total = 0;
+					data.datasets[tooltipItem.datasetIndex].data.forEach(function(element /*, index, array*/ ) {
+						total += element;
+					});
+					var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					var percentTxt = Math.round(value / total * 100);
+					return data.labels[tooltipItem.index] + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + ' (' + percentTxt + '%)';
+				}
+			}
+		}
+	}
+};
+var ctx = document.getElementById("doughnutChart1").getContext("2d");
+var doughnutChart = new Chart(ctx, config);
+</script>
+</body>
+</html>

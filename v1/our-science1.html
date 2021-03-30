@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title> Pycube, Inc. </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minium-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:700,900|Titillium+Web:400,700,900" rel="stylesheet">
+<link rel="stylesheet" media="all" href="css/styles.css">
+<link rel="stylesheet" media="all" href="css/style7.css">
+<link rel="stylesheet" media="all" href="css/particles.css">
+<link rel="stylesheet" media="all" href="css/bootstrap.min.css">
+<link rel="stylesheet" media="all" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- client slider scripts-->
+    <link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+	<script src="js/modernizr.custom.17475.js"></script>
+ <!-- client slider scripts-->
+<!-- mobile menus -->
+ <link rel="stylesheet" type="text/css" href="css/icons.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<script src="js/modernizr.custom.js"></script>
+
+<script>
+$(document).ready(function() {
+  
+  var $slider = $(".slider"),
+      $slideBGs = $(".slide__bg"),
+      diff = 0,
+      curSlide = 0,
+      numOfSlides = $(".slide").length-1,
+      animating = false,
+      animTime = 2000,
+      autoSlideTimeout,
+      autoSlideDelay = 9000,
+      $pagination = $(".slider-pagi");
+  
+  function manageControls() {
+    $(".slider-control").removeClass("inactive");
+    if (!curSlide) $(".slider-control.left").addClass("inactive");
+    if (curSlide === numOfSlides) $(".slider-control.right").addClass("inactive");
+  };
+  
+  function autoSlide() {
+    autoSlideTimeout = setTimeout(function() {
+      curSlide++;
+      if (curSlide > numOfSlides) curSlide = 0;
+      changeSlides();
+    }, autoSlideDelay);
+  };
+  
+  autoSlide();
+  
+  function changeSlides(instant) {
+    if (!instant) {
+      animating = true;
+      manageControls();
+      $slider.addClass("animating");
+      $slider.css("top");
+      $(".slide").removeClass("active");
+      $(".slide-"+curSlide).addClass("active");
+      setTimeout(function() {
+        $slider.removeClass("animating");
+        animating = false;
+      }, animTime);
+    }
+    window.clearTimeout(autoSlideTimeout);
+    $(".slider-pagi__elem").removeClass("active");
+    $(".slider-pagi__elem-"+curSlide).addClass("active");
+    $slider.css("transform", "translate3d("+ -curSlide*100 +"%,0,0)");
+    $slideBGs.css("transform", "translate3d("+ curSlide*50 +"%,0,0)");
+    diff = 0;
+    autoSlide();
+  }
+
+  function navigateLeft() {
+    if (animating) return;
+    if (curSlide > 0) curSlide--;
+    changeSlides();
+  }
+
+  function navigateRight() {
+    if (animating) return;
+    if (curSlide < numOfSlides) curSlide++;
+    changeSlides();
+  }
+
+  $(document).on("mousedown touchstart", ".slider", function(e) {
+    if (animating) return;
+    window.clearTimeout(autoSlideTimeout);
+    var startX = e.pageX || e.originalEvent.touches[0].pageX,
+        winW = $(window).width();
+    diff = 0;
+    
+    $(document).on("mousemove touchmove", function(e) {
+      var x = e.pageX || e.originalEvent.touches[0].pageX;
+      diff = (startX - x) / winW * 70;
+      if ((!curSlide && diff < 0) || (curSlide === numOfSlides && diff > 0)) diff /= 2;
+      $slider.css("transform", "translate3d("+ (-curSlide*100 - diff) +"%,0,0)");
+      $slideBGs.css("transform", "translate3d("+ (curSlide*50 + diff/2) +"%,0,0)");
+    });
+  });
+  
+  $(document).on("mouseup touchend", function(e) {
+    $(document).off("mousemove touchmove");
+    if (animating) return;
+    if (!diff) {
+      changeSlides(true);
+      return;
+    }
+    if (diff > -8 && diff < 8) {
+      changeSlides();
+      return;
+    }
+    if (diff <= -8) {
+      navigateLeft();
+    }
+    if (diff >= 8) {
+      navigateRight();
+    }
+  });
+  
+  $(document).on("click", ".slider-control", function() {
+    if ($(this).hasClass("left")) {
+      navigateLeft();
+    } else {
+      navigateRight();
+    }
+  });
+  
+  $(document).on("click", ".slider-pagi__elem", function() {
+    curSlide = $(this).data("page");
+    changeSlides();
+  });
+    $('ul.main-nav li.dropdown').hover(function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+	}, function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+	});
+});
+
+</script>
+<script>
+  	$(document).on("scroll", function(){
+		if
+      ($(document).scrollTop() > 100){
+		  $("header").addClass("shrink");
+		}
+		else
+		{
+			$("header").removeClass("shrink");
+		}
+	});
+</script>
+</head>
+<body>
+<!-- mobile menus -->
+<div class="mp-pusher" id="mp-pusher">
+
+				<!-- mp-menu -->
+				<nav id="mp-menu" class="mp-menu">
+					<div class="mp-level">
+						<h2 class="icon icon-world">All Categories</h2>
+						<ul>
+							<li class="icon icon-arrow-left">
+								<a class="icon icon-display" href="#">Solutions</a>
+								<div class="mp-level">
+									<h2 class="icon icon-display">Solutions</h2>
+									<ul>
+										 <li> <a class="dropdown-item" href="#">Asset Management</a> </li>
+										 <li> <a class="dropdown-item" href="#">Inventory Management</a> </li>
+										 <li> <a class="dropdown-item" href="#">Patient Flow Management</a> </li>
+										 <li> <a class="dropdown-item" href="#">Create Your Own </a> </li>
+										
+									</ul>
+								</div>
+							</li>
+							<li class="icon icon-arrow-left">
+								<a class="icon icon-display" href="#">Our Science</a>
+								<div class="mp-level">
+									<h2 class="icon icon-display">Our Science</h2>
+									
+												<ul>
+												 <li> <a class="dropdown-item" href="#">SyncSens</a> </li>
+												 <li> <a class="dropdown-item" href="#">Connectivity</a> </li>
+												 <li> <a class="dropdown-item" href="#">Applications</a> </li>
+												</ul>
+											
+								</div>
+							</li>
+							<li class="icon icon-arrow-left">
+								<a class="icon icon-display" href="#">Library</a>
+								<div class="mp-level">
+									<h2 class="icon icon-display">Library</h2>
+									<ul>
+										  <li> <a class="dropdown-item" href="#">Case Studies</a> </li>
+									      <li> <a class="dropdown-item" href="#">White Papers</a> </li>
+										  <li> <a class="dropdown-item" href="#">News Letters</a> </li>
+										
+									</ul>
+								</div>
+							</li>
+							<li class="icon icon-arrow-left">
+								<a class="icon icon-news" href="#">About Us</a>
+								<div class="mp-level">
+									<h2 class="icon icon-news">About Us</h2>
+									<ul>
+										<li><a href="#">National Geographic</a></li>
+										<li><a href="#">Scientific American</a></li>
+										<li><a href="#">The Spectator</a></li>
+										<li><a href="#">The Rambler</a></li>
+										<li><a href="#">Physics World</a></li>
+										<li><a href="#">The New Scientist</a></li>
+									</ul>
+								</div>
+							</li>
+							
+							<li><a class="icon icon-photo" href="#"> Blog </a></li>
+							<li><a class="icon icon-wallet" href="#">Partners</a></li>
+							<li><a class="icon icon-wallet" href="#">Support</a></li>
+							<li><a class="icon icon-wallet" href="#">Contact Us</a></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- /mp-menu -->
+
+
+ <header>
+ 
+      <div class="container"> 
+	    <div class="row">
+		<div class="xs-show menu-btn">  <button id="trigger" class="menu-trigger">  </button> </div>
+		 <div class="col col-md-3 logo"> <a href="index.html">  <img src="img/logo.png" />  </a>  </div>
+		 <div class="col col-md-9 float-right right-nav text-right md-show"> 
+		     
+           <div class="col">
+		   <button class="search-btn"> search  </button>		 
+		   <ul class="top-nav list-inline text-right">
+				<li class="list-inline-item"> <a href="#">  Contact Us  </a>  </li>
+				<li> | </li>
+				<li class="list-inline-item"> <a href="#">  Support </a>  </li> 
+				<li> | </li>
+				<li class="list-inline-item"> <a href="#">  Partners </a>  </li> 
+                <li> | </li>				
+		        <li class="list-inline-item"> <a href="#">  Blog </a>  </li> 
+			</ul>
+		   </div>
+           <div class="col float-right">
+		   
+		   <nav class="stroke">
+		       <ul class="main-nav list-inline text-right">
+				<li class="list-inline-item dropdown"> 
+				    
+					<a class="dropdown-toggle" href="#" role="button" id="Solutions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Solutions
+                   </a>
+
+					  <ul class="dropdown-menu" aria-labelledby="Solutions">
+						 <li> <a class="dropdown-item" href="#">Asset Management</a> </li>
+						 <li> <a class="dropdown-item" href="#">Inventory Management</a> </li>
+						 <li> <a class="dropdown-item" href="#">Patient Flow Management</a> </li>
+						 <li> <a class="dropdown-item" href="#">Create Your Own </a> </li>
+					  </ul>
+				 </li>
+				<li class="list-inline-item dropdown"> 
+				    <a class="dropdown-toggle" href="our-science.html" role="button" id="Science"  >  Our Science     </a>  
+				     <ul class="dropdown-menu" aria-labelledby="Science">
+						 <li> <a class="dropdown-item" href="#">SyncSens</a> </li>
+						 <li> <a class="dropdown-item" href="#">Connectivity</a> </li>
+						 <li> <a class="dropdown-item" href="#">Applications</a> </li>
+					</ul>
+				</li> 
+				<li class="list-inline-item dropdown"> 
+				   <a class="dropdown-toggle" href="#" role="button" id="Library" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Library    </a> 
+                   <ul class="dropdown-menu" aria-labelledby="Library">
+					     <li> <a class="dropdown-item" href="#">Case Studies</a> </li>
+						 <li> <a class="dropdown-item" href="#">White Papers</a> </li>
+						 <li> <a class="dropdown-item" href="#">News Letters</a> </li>
+					</ul> 
+				</li> 				
+		       <li class="list-inline-item dropdown"> 
+				    <a class="dropdown-toggle" href="#" role="button" id="About" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  About Us  </a>  
+				     <ul class="dropdown-menu" aria-labelledby="About">
+					     <li> <a class="dropdown-item" href="#">Management</a> </li>
+						 <li> <a class="dropdown-item" href="#">Careers</a> </li>
+						 <li> <a class="dropdown-item" href="#">Press Releases</a> </li>
+					</ul> 
+				
+				</li> 
+			</ul>
+		   </nav>	
+           </div>		   
+			
+	     </div> 
+	  </div>	 
+    
+ </header>
+ <div class="int-banner">  
+  <div id="particles-js" class="particles-banner">  
+     <div class="banner-content"> 
+	     <h2>  Loreum Ipsum </h2> 
+		 <p>  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+     </div> 
+  </div> 
+ 
+ </div>
+
+
+
+<!-- content -->
+
+
+<div class="clear"> </div>
+<div class="services-section">
+	<div class="container">
+		      <div class="row"> 
+				<div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity int-con-img">  <img src="img/img-6.jpg"> </div>
+				<div class="col-sm-12 col-md-6 float-right pt40 scrollflow -slide-left -opacity int-con"> 
+							  <h2> SyncSens </h2> 
+							 <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					      when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+							  <button class="more-btn"> Learn more</button> 
+							
+							  
+				</div> 	
+             </div>
+		
+	
+	
+		     <div class="row"> 
+				
+				<div class="col-sm-12 col-md-6 pt20 scrollflow -slide-right -opacity int-con pt40"> 
+							  <h2> Connectivity </h2> 
+							  <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					              when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+							  <button class="more-btn"> Learn more</button> 
+				</div>
+                <div class="col-sm-12 col-md-6 right text-right service-img scrollflow -pop -opacity int-con-img">  <img src="img/img-6.jpg"> </div>	
+				
+             </div>
+		
+	
+	
+		     <div class="row"> 
+				<div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity int-con-img">  <img src="img/img-6.jpg"> </div>
+				<div class="col-sm-12 col-md-6 pt40 scrollflow -slide-left -opacity int-con"> 
+							  <h2> Applications </h2> 
+							  <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					              when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+							  <button class="more-btn"> Learn more</button> 
+				</div> 	
+              </div>
+			
+			 
+			   <div class="row"> 
+				
+				<div class="col-sm-12 col-md-4 scrollflow -slide-right -opacity int-con "> 
+						<div class="card-new">
+ 						<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					      when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+					     </div>	  
+							  
+				</div>
+                <div class="col-sm-12 col-md-4 service-img scrollflow -pop -opacity int-con">  
+				   <div class="card-new">
+				    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					  when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+				    </div>
+				</div>	
+				 <div class="col-sm-12 col-md-4  service-img scrollflow -pop -opacity int-con"> 
+                     <div class="card-new">				 
+				    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+					  when an unknown printer took a galley of type and scrambled it to make a type specimen book </p>
+					</div>  
+				</div>
+				
+             </div>
+			 
+		 
+		
+	</div>
+</div> 
+
+
+
+<div class="clear"> </div> 
+<footer>
+   <div class="footer"> 
+     
+	   <div class="footer-con"> 
+	    <div class="footer-header">  Contact Us  </div>
+		  <div class="container">  
+		     <ul class="row"> 
+			   <li>  
+			     <p> VIRGINIA  <br />
+					21525 Ridgetop Circle,  <br />
+					Suite 110, Sterling, 20166.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> TEXAS  <br />
+				     13155 Noel Road, <br />
+					 Suite 900, Dallas, 75240.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> CALIFORNIA  <br />
+					1250 Oakmeade, Suite 210,  <br />
+					Santa Clara, CA 94085.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> NEW YORK  <br />
+					 241 E 32nd Street,  <br />
+					 New York, NY 10016.
+			     </p>		
+			   </li>
+			    <li>  
+			      <p> <i class="fa fa-phone" aria-hidden="true"></i> 571-229-5860 </p>
+                   <p> <i class="fa fa-envelope" aria-hidden="true"></i>sales@pycube.com   </p>
+			    		
+			   </li>
+			 </ul>
+		 </div>
+	    <div class="clear"> </div>
+     </div>
+ <div class="copyrights">   
+    <div class="container">  PYcube &copy; 2018 All rights reserved.   <span><a href="#"> Privacy </a> |</span> <span><a href="#">Policy </a></span> </div> </div>
+   </div>
+</footer>  
+</div>  
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/eskju.jquery.scrollflow.min.js"></script>
+<script type="text/javascript">
+	$( '#carousel' ).elastislide();
+</script>
+<!-- particles -->
+<script src="particles.js"></script>
+<script src="js/app.js"></script>
+<script src="js/stats.js"></script>
+<!-- mobile menus -->
+<script src="js/classie.js"></script>
+<script src="js/mlpushmenu.js"></script>
+<script>
+	new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+</script>
+</body>
+</html>

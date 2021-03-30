@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title> Pycube, Inc. </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minium-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:700,900|Titillium+Web:400,700,900" rel="stylesheet">
+<link rel="stylesheet" media="all" href="css/styles.css">
+<link rel="stylesheet" media="all" href="css/style7.css">
+<link rel="stylesheet" media="all" href="css/bootstrap.min.css">
+<link rel="stylesheet" media="all" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- client slider scripts-->
+    <link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+	<script src="js/modernizr.custom.17475.js"></script>
+ <!-- client slider scripts-->
+
+<script>
+$(document).ready(function() {
+  
+  var $slider = $(".slider"),
+      $slideBGs = $(".slide__bg"),
+      diff = 0,
+      curSlide = 0,
+      numOfSlides = $(".slide").length-1,
+      animating = false,
+      animTime = 2000,
+      autoSlideTimeout,
+      autoSlideDelay = 9000,
+      $pagination = $(".slider-pagi");
+  
+  function manageControls() {
+    $(".slider-control").removeClass("inactive");
+    if (!curSlide) $(".slider-control.left").addClass("inactive");
+    if (curSlide === numOfSlides) $(".slider-control.right").addClass("inactive");
+  };
+  
+  function autoSlide() {
+    autoSlideTimeout = setTimeout(function() {
+      curSlide++;
+      if (curSlide > numOfSlides) curSlide = 0;
+      changeSlides();
+    }, autoSlideDelay);
+  };
+  
+  autoSlide();
+  
+  function changeSlides(instant) {
+    if (!instant) {
+      animating = true;
+      manageControls();
+      $slider.addClass("animating");
+      $slider.css("top");
+      $(".slide").removeClass("active");
+      $(".slide-"+curSlide).addClass("active");
+      setTimeout(function() {
+        $slider.removeClass("animating");
+        animating = false;
+      }, animTime);
+    }
+    window.clearTimeout(autoSlideTimeout);
+    $(".slider-pagi__elem").removeClass("active");
+    $(".slider-pagi__elem-"+curSlide).addClass("active");
+    $slider.css("transform", "translate3d("+ -curSlide*100 +"%,0,0)");
+    $slideBGs.css("transform", "translate3d("+ curSlide*50 +"%,0,0)");
+    diff = 0;
+    autoSlide();
+  }
+
+  function navigateLeft() {
+    if (animating) return;
+    if (curSlide > 0) curSlide--;
+    changeSlides();
+  }
+
+  function navigateRight() {
+    if (animating) return;
+    if (curSlide < numOfSlides) curSlide++;
+    changeSlides();
+  }
+
+  $(document).on("mousedown touchstart", ".slider", function(e) {
+    if (animating) return;
+    window.clearTimeout(autoSlideTimeout);
+    var startX = e.pageX || e.originalEvent.touches[0].pageX,
+        winW = $(window).width();
+    diff = 0;
+    
+    $(document).on("mousemove touchmove", function(e) {
+      var x = e.pageX || e.originalEvent.touches[0].pageX;
+      diff = (startX - x) / winW * 70;
+      if ((!curSlide && diff < 0) || (curSlide === numOfSlides && diff > 0)) diff /= 2;
+      $slider.css("transform", "translate3d("+ (-curSlide*100 - diff) +"%,0,0)");
+      $slideBGs.css("transform", "translate3d("+ (curSlide*50 + diff/2) +"%,0,0)");
+    });
+  });
+  
+  $(document).on("mouseup touchend", function(e) {
+    $(document).off("mousemove touchmove");
+    if (animating) return;
+    if (!diff) {
+      changeSlides(true);
+      return;
+    }
+    if (diff > -8 && diff < 8) {
+      changeSlides();
+      return;
+    }
+    if (diff <= -8) {
+      navigateLeft();
+    }
+    if (diff >= 8) {
+      navigateRight();
+    }
+  });
+  
+  $(document).on("click", ".slider-control", function() {
+    if ($(this).hasClass("left")) {
+      navigateLeft();
+    } else {
+      navigateRight();
+    }
+  });
+  
+  $(document).on("click", ".slider-pagi__elem", function() {
+    curSlide = $(this).data("page");
+    changeSlides();
+  });
+    $('ul.main-nav li.dropdown').hover(function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+	}, function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+	});
+});
+
+</script>
+
+</head>
+<body>
+ <header>
+ 
+      <div class="container"> 
+	    <div class="row">
+		 <div class="col col-md-4 logo">  <img src="img/logo.png" />   </div>
+		 <div class="col col-md-8 float-right right-nav"> 
+           <div class="col">
+		   <button class="search-btn"> search  </button>		 
+		   <ul class="top-nav list-inline text-right">
+				<li class="list-inline-item"> <a href="#">  Contact Us  </a>  </li>
+				<li> | </li>
+				<li class="list-inline-item"> <a href="#">  Support </a>  </li> 
+				<li> | </li>
+				<li class="list-inline-item"> <a href="#">  Partners </a>  </li> 
+                <li> | </li>				
+		        <li class="list-inline-item"> <a href="#">  Blog </a>  </li> 
+			</ul>
+		   </div>
+           <div class="col float-right">
+		   <nav class="stroke">
+		       <ul class="main-nav list-inline text-right">
+				<li class="list-inline-item dropdown"> 
+				    
+					<a class="dropdown-toggle" href="#" role="button" id="Solutions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Solutions
+                   </a>
+
+					  <ul class="dropdown-menu" aria-labelledby="Solutions">
+						 <li> <a class="dropdown-item" href="#">Asset Mgmt</a> </li>
+						 <li> <a class="dropdown-item" href="#">Inventory Mgmt</a> </li>
+						 <li> <a class="dropdown-item" href="#">Patient Flow Mgmt</a> </li>
+						 <li> <a class="dropdown-item" href="#">Create Your Own </a> </li>
+					  </ul>
+				 </li>
+				<li class="list-inline-item dropdown"> 
+				    <a class="dropdown-toggle" href="#" role="button" id="Science" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  Our Science     </a>  
+				     <ul class="dropdown-menu" aria-labelledby="Science">
+						 <li> <a class="dropdown-item" href="#">SyncSens</a> </li>
+						 <li> <a class="dropdown-item" href="#">Connectivity</a> </li>
+						 <li> <a class="dropdown-item" href="#">Applications</a> </li>
+					</ul>
+				</li> 
+				<li class="list-inline-item dropdown"> 
+				   <a class="dropdown-toggle" href="#" role="button" id="Library" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Library    </a> 
+                   <ul class="dropdown-menu" aria-labelledby="Library">
+					     <li> <a class="dropdown-item" href="#">Case Studies</a> </li>
+						 <li> <a class="dropdown-item" href="#">White Papers</a> </li>
+						 <li> <a class="dropdown-item" href="#">News Letters</a> </li>
+					</ul> 
+				</li> 				
+		       <li class="list-inline-item dropdown"> 
+				    <a class="dropdown-toggle" href="#" role="button" id="About" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  About Us  </a>  
+				     <ul class="dropdown-menu" aria-labelledby="About">
+					     <li> <a class="dropdown-item" href="#">Management</a> </li>
+						 <li> <a class="dropdown-item" href="#">Careers</a> </li>
+						 <li> <a class="dropdown-item" href="#">Press Releases</a> </li>
+					</ul> 
+				
+				</li> 
+			</ul>
+		   </nav>	
+           </div>		   
+			
+	     </div> 
+	  </div>	 
+    
+ </header>
+<div class="slider-container" id="banner">
+  <div class="slider-control left inactive"></div>
+  <div class="slider-control right"></div>
+  <ul class="slider-pagi"></ul>
+  <div class="slider">
+    <div class="slide slide-0 active">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+        </svg>
+        <div class="slide__text">
+          <h2 class="slide__text-heading">Your modern <br> <span class="">Asset Management Solution aktivu&#8482;</span> <br/></h2>
+          <p class="slide__text-desc">Powered by the cloud.</p>
+      
+		   
+				<div class="btn"> <a href="#"> More.. </a>
+				  <div class="btn2"></div>
+				</div>
+			
+			
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-1 ">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+        </svg>
+        <div class="slide__text">
+          <h2 class="slide__text-heading">SyncSens</h2>
+          <p class="slide__text-desc">Everything you need to locate your assets.</p>
+          	<div class="btn"> <a href="#"> More.. </a>
+				<div class="btn2"></div>
+			</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+        </svg>
+        <div class="slide__text">
+          <h2 class="slide__text-heading">Learn about our solutions in action</h2>
+          <p class="slide__text-desc"></p>
+           	<div class="btn"> <a href="#"> More.. </a>
+				  <div class="btn2"></div>
+			</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-3">
+      <div class="slide__bg"></div>
+      <div class="slide__content">
+        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+        </svg>
+        <div class="slide__text">
+          <h2 class="slide__text-heading">Contact us to start building your solution</h2>
+          <p class="slide__text-desc"></p>
+         	<div class="btn"> <a href="#"> More.. </a>
+				  <div class="btn2"></div>
+			</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- content -->
+<div class="container"> 
+   <ul class="ca-menu">
+                    <li>
+                        <a href="#">
+                            <span class="ca-icon insights"></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Modular </h2>
+                                <h3 class="ca-sub">Build your ideal solution</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="ca-icon scalable">&nbsp; </span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Scalable</h2>
+                                <h3 class="ca-sub">Solutions that grow with you</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="ca-icon insights"></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Intelligent </h2>
+                                <h3 class="ca-sub">Make informed decisions</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="ca-icon custom">&nbsp;</span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Connected</h2>
+                                <h3 class="ca-sub">Stay connected to your assets</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="ca-icon graph"> A </span>
+                            <div class="ca-content">
+                                <h2 class="ca-main">Cloud-Based </h2>
+                                <h3 class="ca-sub">Powered by the cloud </h3>
+                            </div>
+                        </a>
+                    </li>
+                    
+                   
+                   
+                  
+			    </ul>	
+                 <div class="clear"> </div>
+ 
+</div>
+
+<div class="clear"> </div>
+<div class="services-section">
+	<div class="container">
+		      <div class="row"> 
+				<div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity">  <img src="img/service-img2.png"> </div>
+				<div class="col-sm-12 col-md-6 float-right pt100 scrollflow -slide-left -opacity"> 
+							  <h2> Track. Locate. Utilize </h2> 
+							  <p> Our asset management solutions help you put the care in patient care. Easily track and locate your assets to maximize asset utilization. </p>
+							  <button class="more-btn"> Learn more</button> 
+							
+							  
+				</div> 	
+             </div>
+		
+	
+	
+		     <div class="row"> 
+				
+				<div class="col-sm-12 col-md-6 pt100 scrollflow -slide-right -opacity"> 
+							  <h2> Track and streamline <br/> patient flow </h2> 
+							  <p> Transform patient experience to ensure patient safety. </p>
+							  <button class="more-btn"> Learn more</button> 
+				</div>
+                <div class="col-sm-12 col-md-6 right text-right service-img scrollflow -pop -opacity">  <img src="img/service-img4.png"> </div>	
+				
+             </div>
+		
+	
+	
+		     <div class="row"> 
+				<div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity">  <img src="img/service-img3.png"> </div>
+				<div class="col-sm-12 col-md-6 pt100 scrollflow -slide-left -opacity"> 
+							  <h2> Optimize staff efficiency </h2> 
+							  <p> Improve staff productivity to reduce costs and improve quality of care.</p>
+							  <button class="more-btn"> Learn more</button> 
+				</div> 	
+              </div>
+			  <div class="row"> 
+				
+				<div class="col-sm-12 col-md-6 pt100 scrollflow -slide-right -opacity"> 
+							  <h2> Reduce energy costs</h2> 
+							  <p> Track and monitor utility usage across your facilities. </p>
+							  <button class="more-btn"> Learn more</button> 
+				</div>
+                <div class="col-sm-12 col-md-6 right text-right service-img scrollflow -pop -opacity">  <img src="img/service-img2.png"> </div>	
+				
+             </div>
+		
+	</div>
+</div> 
+
+<section>
+  <div class="container testimonials"> 
+         <h2 class="text-center"> Customer Stories </h2> 
+		  
+		  <ul class="row"> 
+		   <li class="col-md-4"> 
+             <div class="card scrollflow -slide-right -opacity"> 
+			 <img src="img/profile1.jpg" /> 
+			 <h3>  <span class="quotes start"></span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span class="quotes end"> </span> </h3>
+			 <p class="italic">  -John Doe </p>
+			 </div>
+		   </li>
+		    <li class="col-md-4 scrollflow -slide-top -opacity"> 
+             <div class="card"> 
+			 <img src="img/profile2.jpg" /> 
+			 <h3>  <span class="quotes start"></span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span class="quotes end"> </span> </h3>
+			 <p class="italic">  -John Doe </p>
+			 </div>
+		   </li>
+		    <li class="col-md-4 scrollflow -slide-left -opacity"> 
+             <div class="card"> 
+			 <img src="img/profile3.jpg" /> 
+			 <h3>  <span class="quotes start"></span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span class="quotes end"> </span> </h3>
+			 <p class="italic">  -John Doe </p>
+			 </div>
+		   </li>
+		   
+		  </ul> 
+		
+     
+       
+  </div>
+</section>
+<section>
+  <div class="clients"> 
+           
+                   <div class="container demo-1">
+				   <ul id="carousel" class="elastislide-list">
+					 <li> <a href="#"> <img src="img/client1.png"  alt="clients"> </a> </li>
+                     <li> <a href="#"> <img src="img/client2.png"  alt="clients"> </a>  </li> 
+                     <li> <a href="#"> <img src="img/client3.png"  alt="clients"> </a>  </li> 
+                     <li> <a href="#"> <img src="img/client4.png"  alt="clients"> </a> </li>
+                     <li> <a href="#"> <img src="img/client5.png"  alt="clients"> </a> </li>
+                     <li> <a href="#"> <img src="img/client6.png"  alt="clients"> </a> </li>
+					 <li> <a href="#"> <img src="img/client7.png"  alt="clients"> </a> </li>
+                     <li> <a href="#"> <img src="img/client8.png"  alt="clients"> </a>  </li> 
+                     
+                	
+				</ul>
+              </div>
+			
+  </div>
+</section>  
+<footer>
+   <div class="footer"> 
+     
+	   <div class="footer-con"> 
+	    <div class="footer-header">  Contact Us  </div>
+		  <div class="container">  
+		     <ul class="row"> 
+			   <li>  
+			     <p> VIRGINIA  <br />
+					21525 Ridgetop Circle,  <br />
+					Suite 110, Sterling, 20166.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> TEXAS  <br />
+				     13155 Noel Road, <br />
+					 Suite 900, Dallas, 75240.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> CALIFORNIA  <br />
+					1250 Oakmeade, Suite 210,  <br />
+					Santa Clara, CA 94085.
+			     </p>		
+			   </li>
+			    <li>  
+			     <p> NEW YORK  <br />
+					 241 E 32nd Street,  <br />
+					 New York, NY 10016.
+			     </p>		
+			   </li>
+			    <li>  
+			      <p> <i class="fa fa-phone" aria-hidden="true"></i> 571-229-5860 </p>
+                   <p> <i class="fa fa-envelope" aria-hidden="true"></i>sales@pycube.com   </p>
+			    		
+			   </li>
+			 </ul>
+		 </div>
+	    <div class="clear"> </div>
+     </div>
+ <div class="copyrights">   
+    <div class="container">  PYcube &copy; 2018 All rights reserved.   <span><a href="#"> Privacy </a> |</span> <span><a href="#">Policy </a></span> </div> </div>
+   </div>
+</footer>  
+  
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="js/index.js"></script>
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/eskju.jquery.scrollflow.min.js"></script>
+<script type="text/javascript">
+	$( '#carousel' ).elastislide();
+</script>
+
+</body>
+</html>

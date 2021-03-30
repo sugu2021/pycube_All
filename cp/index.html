@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>pycube</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-sm  navbar-dark justify-content-end custom_nav">
+		<!-- Brand/logo -->
+		<a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+	</nav>
+	<header class="rental-header">
+		<div class="custom_header_padding header_custom">
+			<h2 class="text-center">$ 3,562,300</h2>
+			<h3 class="text-center">Estimated Capital Budget for 2020</h3>
+		</div>
+		<div class="container">
+			<ul class="designer_ul">
+				Conditions checked : EOL based on AHA
+				<li><span class="circledot"></span>The mean failure rate </li>
+				<li><span class="circledot"></span>Adjusted price of asset when purchased (+20% for inflation) </li>
+				<li><span class="circledot"></span>Utilization trends</li>
+			</ul>
+		</div>
+	</header>
+	<div class="container py-2">
+		<h3 class="main_heading"> RETIRING ASSET CATEGORIES</h3>
+		<p class="sub_heading">Categories of Assets to be replaced based on Asset Age</p>
+
+		<div class="input_box">
+			<div class="row pt-2">
+				<div class="col-sm-4">
+					<label class="d-block mb-4 pump_check">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl add_active custom_inpt_circle "><!--check_active_circle-->
+									<div class="checkposition hide"><img src="img/check.png"></div>
+									10/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Pumps </div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl custom_inpt_circle">
+									20/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Telemetry Devices </div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl custom_inpt_circle">
+									10/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Monitors </div>
+						</div>
+					</label>
+				</div>
+			</div>
+
+			<div class="row pt-2 mb-4">
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">CVVH</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">Heart Lung Machine</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">Hyper/Hypothermia Machine</div>
+						</div>
+					</label>
+				</div>
+			</div>
+
+			<div class="row pt-2">
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl custom_inpt_circle">
+									10/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Endoscopic Ultrasound Processor</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl custom_inpt_circle">
+									10/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Cardiac Diagnostic System</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text left_circl custom_inpt_circle">
+									10/28
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_disabled_inpt">Electrosurgical Unit</div>
+						</div>
+					</label>
+				</div>
+			</div>
+
+			<div class="row pt-2 mb-4">
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">Dialysis Machine</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">Colposcope</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="d-block mb-4">
+						<div class="input-group mb-3" >
+							<div class="input-group-prepend">
+								<div class="input-group-text custom_inpt_circle custom_inpt_circle_right">
+									5/15
+									<input type="checkbox" id="check1" aria-label="Checkbox for following text input">
+								</div>
+							</div>
+							<div class="form-control disabled_input custom_right_inpt custom_disabled_inpt">Diathermy Unit</div>
+						</div>
+					</label>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- <div class="text-right asset_button_div">
+			<button type="button" class="btn custom_button">GENERATE REPORT</button>
+		</div> -->
+
+
+		<div class="pumps_box hide">
+			<div class="row mb-4">
+				<div class="col-sm-12">
+					<h3>Pumps <span class="circlepumps">10/28 assets listed below</span> <span class="valuepumps">The price of asset when Purchased $ 5400</span></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="row">
+						<div class="col-sm-10 text-center">
+							<p class="media_above_heading">ASSET</p>
+						</div>
+						<div class="col-sm-2 text-center">
+							<p class="media_above_heading">LIFE LEFT <small>(months)</small></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="select_pump" class="col-sm-7 pump_media">
+					<label class="d-block check_pump">
+						<input type="radio" class="custom_radio" name="group" value="one">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media add_bg">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023975 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media add_bg">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">6</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="three">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023976 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">12</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="four">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023977 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">6</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="five">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023978 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">8</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="six">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023979 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">4</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="seven">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023980 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">5</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="eight">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023981 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">11</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="nine">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023982 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">4</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="two">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023983 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">4</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+					<label class="d-block">
+						<input type="radio" class="custom_radio" name="group" value="two">
+						<div class="row source_box_ul">
+							<div class="col-sm-10">
+								<div class="custom_media">
+									<div class="media">
+										<img src="img/equipment.png" class="mr-3 asset_img" alt="...">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5">10023984 – Hospital/Abott Plum +</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="custom_media">
+									<div class="media">
+										<div class="media-body">
+											<h5 class="my-0 py-4 custom_media_h5 text-center">6</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</label>
+				</div>
+				<div class="col-sm-5">
+					<div class="graph_box hide">
+						<h4 class="pt-3 text-center" style="font-weight: 700;">Detailed view of asset</h4>
+						<h5 class="pb-5 pt-2 text-center"><b>10023975 – Hospital/Abott Plum</b></h5>
+						<h6 class="pt-2 pb-1 years_text">E.O.L : 8 years</h6>
+						<div class="lifeleft_bar">
+							<div class="remaing_life">6mo</div>
+						</div>
+						<p class="mb-0 mt-1 text-center" style="color: #ff0000;">Life left <span><b>6mo</b></span></p>
+						<div class="pt-3">
+							<h4 class="pt-5 text-center"><b>Ticket Count Trend</b></h4>
+							<canvas id="bar-chart" width="100%" height="100"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript">
+ // Return with commas in between
+ var numberWithCommas = function(x) {
+ 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+ };
+
+ var dataPack1 = [2, 3, 4, 2];
+ var dates = ["2016", "2017", "2018", "2019"];
+
+// Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
+
+var bar_ctx = document.getElementById('bar-chart');
+var bar_chart = new Chart(bar_ctx, {
+	type: 'bar',
+	data: {
+		labels: dates,
+		datasets: [
+		{
+			label: 'Ticket Count Trends',
+			data: dataPack1,
+			backgroundColor: "rgb(246, 129, 54)",
+			hoverBackgroundColor: "rgb(246, 129, 54)",
+			hoverBorderWidth: 2,
+			hoverBorderColor: 'lightgrey'
+		},
+		]
+	},
+	options: {
+		animation: {
+			duration: 10,
+		},
+		tooltips: {
+			mode: 'label',
+			callbacks: {
+				label: function(tooltipItem, data) { 
+					return data.datasets[tooltipItem.datasetIndex].label + ": " + numberWithCommas(tooltipItem.yLabel);
+				}
+			}
+		},
+		scales: {
+			xAxes: [{ 
+				stacked: true, 
+				gridLines: { display: false },
+			}],
+			yAxes: [{ 
+				stacked: true, 
+				ticks: {
+					callback: function(value) { return numberWithCommas(value); },
+					 stepSize: 1,
+				}, 
+			}],
+        }, // scales
+        legend: {display: true}
+    } // options
+}
+);
+</script>
+</body>
+</html>

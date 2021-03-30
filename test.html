@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://js.live.net/v5.0/OneDrive.js" id="onedrive-js" client-id="eb418dea-a542-49e2-bf0c-9a255c59d36d"></script>
+<script>
+var pickerOptions = {
+  success: function(files) {
+    // Handle returned file object(s)
+    alert("You picked " + files.values[0].fileName);
+  },
+
+  cancel: function() {
+      // handle when the user cancels picking a file
+  },
+
+  linkType: "webViewLink", // or "downloadLink",
+  multiSelect: false // or true
+}
+</script>
+<script type="text/javascript">
+  window.onload = function() {
+    //var pickerOptions = { /* ... */ };
+    var pickerButton = OneDrive.createOpenButton(pickerOptions);
+    document.getElementById("picker").appendChild(pickerButton);
+  }
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+<div id="picker"></div>
+</body>
+</html>
