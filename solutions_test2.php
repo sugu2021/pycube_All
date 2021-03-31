@@ -16,6 +16,26 @@
     font-size: 36px !important;
     padding: 20px 0px 0px 0px !important;
 }
+
+.services-section p {
+    font-size: 16px !important;
+    color: black !important;
+    margin: auto !important;
+
+    /* color: #666;
+    margin: 20px 0px; */
+}
+
+.service_card_h100{
+    height: 100% !important;
+}
+
+#pycube_clients img {
+    max-width: 80%;
+    transition: 0.3s;
+}
+
+
     </style>
 
 
@@ -40,18 +60,6 @@
 
             </div> 
 
-            <!-- <div class="clear"> </div>
-            
-            <section>
-                <div class="services-section">
-                <div class="container">
-50200006867928
-
-9498067152
-                </div>
-                </div>
-            </section> -->
-
 
 
             <div class="clear"> </div>
@@ -59,9 +67,56 @@
             <!-- content -->
             <div class="clear"> </div>
             <div class="services-section">
+           
                 <div class="container">
+                    <div class="col-md-12 mx-auto">
+                        <div class="row py-5">
+                            <div class="col-md-6 mx-auto">
+                                <div class="card service_card_h100">
+                                  <div class="card-body">
+                                    <img src="img/our-science-connectivity-image.png" alt="Digital Asset Management">
+                                    
+                                    <br>
+
+                                    <h2> FOR BIOMEDICAL AND CLINICAL ENGINEERING TEAMS </h2>
+                            
+                                    <br>
+                                    <p class="para_text"> Critical and most important to biomedical and clinical engineering teams is locating an asset, either to perform maintenance or address a product alert or recall or deliver the asset to a nurse. Applications like legacy CMMS (computerized maintenance management systems) or a traditional asset management system, may deliver maintenance or ticketing or an asset database for one location, these applications do not deliver to you advanced functionality required for a modern hospital biomedical or clinical engineering team. Pycube delivers solutions, beyond traditional archaic asset management or legacy CMMS, for locating and tracking assets, preventing asset loss, helping you make intelligent use/replace analytics driven decisions to provide a safe compliant environment for patient care.</p>
+                            
+                                    <br>
+                            
+                                    <div> <a href="biomedical-management.php" class="more-btn"> Learn more </a> </div> 
+                                   </div>
+                                </div>
+                            </div>   
+
+                            <div class="col-md-6 mx-auto">
+                                <div class="card service_card_h100">
+                                  <div class="card-body">
+                                    <img src="img/our-science-connectivity-image.png" alt="Digital Asset Management">
+                                    <br>
+                                    <h2> FOR BIOMEDICAL AND CLINICAL ENGINEERING TEAMS </h2>
+                                    <br>
+                                    <p class="para_text"> Critical and most important to biomedical and clinical engineering teams is locating an asset, either to perform maintenance or address a product alert or recall or deliver the asset to a nurse. Applications like legacy CMMS (computerized maintenance management systems) or a traditional asset management system, may deliver maintenance or ticketing or an asset database for one location, these applications do not deliver to you advanced functionality required for a modern hospital biomedical or clinical engineering team. Pycube delivers solutions, beyond traditional archaic asset management or legacy CMMS, for locating and tracking assets, preventing asset loss, helping you make intelligent use/replace analytics driven decisions to provide a safe compliant environment for patient care.</p>
+                            
+                                    <br>
+                                    <div> <a href="biomedical-management.php" class="more-btn"> Learn more </a> </div> 
+                                   </div>
+                                </div>
+                            </div>  
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- <div class="container">
                     <div class="row"> 
-                        <div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity int-con-img pt10">  <img src="img/our-science-connectivity-image.png" alt="Digital Asset Management"> </div>
+                        <div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity int-con-img pt10">  
+                        <img src="img/our-science-connectivity-image.png" alt="Digital Asset Management"> </div>
                         <div class="col-sm-12 col-md-6 float-right pt90 scrollflow -slide-left -opacity int-con"> 
                             <h2> FOR BIOMEDICAL AND CLINICAL ENGINEERING TEAMS </h2>
                             <p> Critical and most important to biomedical and clinical engineering teams is locating an asset, either to perform maintenance or address a product alert or recall or deliver the asset to a nurse. Applications like legacy CMMS (computerized maintenance management systems) or a traditional asset management system, may deliver maintenance or ticketing or an asset database for one location, these applications do not deliver to you advanced functionality required for a modern hospital biomedical or clinical engineering team. Pycube delivers solutions, beyond traditional archaic asset management or legacy CMMS, for locating and tracking assets, preventing asset loss, helping you make intelligent use/replace analytics driven decisions to provide a safe compliant environment for patient care.</p>
@@ -80,7 +135,7 @@
                          <div class="col-sm-12 col-md-6 service-img scrollflow -pop -opacity int-con-img pt10">  <img src="img/solutions-asset-mgmt-image.png" alt="Asset Management System"> </div>
                     </div>
                 
-                </div>	
+                </div>	 -->
 
 
 
@@ -101,11 +156,9 @@
 
                 <div class="clear"> </div>
 
-                <!-- common_curousel Start -->
-                <?php include './includes/common_curousel.php'; ?>
-                <!-- common_curousel End -->
+            <!-- common_curousel Start -->
 
-            <!-- <section id="pycube_clients" style="padding: 10px 0px; background-color:#fff;">
+            <section id="pycube_clients" style="padding: 30px 0px; background-color:#fff;">
                 <div class=""> 
                     <div class="container ">
                         <div class="owl-carousel partner-carousel">
@@ -120,10 +173,10 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
+            <!-- common_curousel End -->
 
-            </div> 
 
             <div class="clear"> </div> 
 
